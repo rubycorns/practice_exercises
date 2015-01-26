@@ -38,4 +38,21 @@ describe 'first cake' do
     end
   end
 
+  context '.first(n)' do
+    specify 'returns the first two objects in the array' do
+      array = subject.first(2).map(&:name)
+      expect(array).to eql ['New York Cheesecake', 'Birthday Cake']
+    end
+
+    specify 'returns the first three objects in the array' do
+      array = subject.first(3).map(&:name)
+      expect(array).to eql ['New York Cheesecake', 'Birthday Cake', 'Black Forest Cake']
+    end
+
+    specify 'does not return moar cake than is available' do
+      array = subject.first(100).map(&:name)
+      expect(array).to eql ['New York Cheesecake', 'Birthday Cake', 'Black Forest Cake', 'Ice Cream Cake', 'Fruit Cake' ]
+    end
+  end
+
 end
