@@ -1,4 +1,5 @@
 #rspec.info
+require 'rspec'
 
 describe Enumerable do
   describe "each_slice" do
@@ -18,6 +19,10 @@ describe Enumerable do
         expect(subject.to_a[2].length).to eq(7)
         expect(subject.to_a[3].length).to eq(7)
         expect(subject.to_a[4].length).to eq(3)
+      end
+
+      it "calls a number more than the number of array items" do
+        expect([1, 2].each_slice(5).to_a).to eq [[1, 2]]
       end
     end
   end
@@ -58,4 +63,6 @@ end
 #   edge case
 #     - passing in no arguments
 #     - passing in the wrong kind of arguments
-#     - trying to slice something that is less than the interval given/argument
+# #     - trying to slice something that is less than the interval given/argument
+# cool things about each_slice
+# it's an enumerator, which means you can combine it with all enumerable methods
