@@ -49,5 +49,9 @@ describe 'TakeWhileCake' do
     specify 'returns an empty array' do # is this called something like an enumerator array?
       expect([].take_while.to_a).to eql []
     end
+
+    specify 'with a block' do
+      expect([].take_while { |m| m.include? 'cake' } ).to eql []
+    end
   end
 end
