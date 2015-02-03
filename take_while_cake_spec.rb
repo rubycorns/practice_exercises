@@ -5,7 +5,7 @@
 
 # if no block is given, an enumerator is returned instead
 
-describe 'TakeWhileSCake' do
+describe 'TakeWhileCake' do
   subject { ['cheese cake', 'carrot cake', 'white chocolate brownie cake', 'apple pie', 'sad unincluded cake'] }
 
   let(:cakes) { subject.take_while { |m| m.include? 'cake' } }
