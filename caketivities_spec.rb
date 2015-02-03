@@ -4,7 +4,7 @@ class Caketivities
   attr_reader :activity
 
   def self.all
-    ["bake", "decorate", "eat", "throw", "send", "sell", "gift"].map { |activity| new(activity) }
+    ["eat", "send", "decorate", "throw", "sell", "gift", "bake", "shoplift"].map { |activity| new(activity) }
   end
 
   def initialize(activity)
@@ -23,12 +23,12 @@ describe "Caketivities" do
   end
 
   it "has all caketivities in an array" do
-    expect(@caketivities_array).to eq ["bake", "decorate", "eat", "throw", "send", "sell", "gift"]
+    expect(@caketivities_array).to eq ["eat", "send", "decorate", "throw", "sell", "gift", "bake", "shoplift"]
   end
 
   it "finds the first activity which has more than 3 letters" do
     act = @caketivities_array.find { |c| c.length > 3 }
-    expect(act).to eq "bake"
+    expect(act).to eq "send"
   end
 
   it "returns nil when checking for something nonexistant" do
@@ -39,5 +39,21 @@ describe "Caketivities" do
   it 'returns whatever ifnone is if it finds nothing' do
     act = @caketivities_array.find(proc {'OH HAY TAM'}) { |c| c.length < 1}
     expect(act).to eq 'OH HAY TAM'
+  end
+###################################################################################################
+
+  it 'returns the shortest and the longest caketivity' do
+    mima = @caketivities_array.minmax_by {|c| c.length}
+    expect(mima).to eq ['eat', 'decorate']
+  end
+
+  it 'returns the first and the last caketivity when sorted alphabetically' do
+    mima = @caketivities_array.sort.minmax_by {|x| x }
+    expect(mima).to eq ['bake', 'throw']
+  end
+
+  # it 'returns the two caketivities with the min and the max number of the letter l in them' do
+  #   #mima = @caketivities_array.sort.minmax_by {|x| x.count.include?("l") }
+  #   expect(mima).to eq ['shoplift', 'sell']
   end
 end
