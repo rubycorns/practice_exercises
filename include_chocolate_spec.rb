@@ -9,7 +9,7 @@ end
 
 describe 'Snickers' do
 
-  subject { ChocolateBar.new( { chocolate: true, peanuts: true, caramel: true } ) }
+  subject { ChocolateBar.new( [:chocolate, :peanuts, :caramel] ) }
 
   it 'contains chocolate' do
     expect(subject.ingredients.include? :chocolate).to eq true
